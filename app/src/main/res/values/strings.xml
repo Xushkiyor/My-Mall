@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">MyMall</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="email_id">Email ID</string>
+    <string name="password">Password</string>
+    <string name="forgot_password_sign_in">Forgot Password?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="or">or</string>
+    <string name="new_user_sign_up">New User | Sign Up!</string>
+    <string name="fullName">FullName</string>
+    <string name="email">Email</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="already_have_an_account_sign_in">Already have an account | Sign In!</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="password_at_least_8_characters">Password (at least 8 characters)</string>
+    <string name="forgot_password_reset">Forgot Password?</string>
+    <string name="dont_worry_etc">Don\'t worry we just need your registered email address and its done!</string>
+    <string name="provide_your_registered_email_here">Provide your registered email here</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="check_button_above">CHeck your Inbox after clicking the button above.</string>
+    <string name="recovery_email_send_successfully">Recovery email send successfully! Check your Inbox. </string>
+</resources>
