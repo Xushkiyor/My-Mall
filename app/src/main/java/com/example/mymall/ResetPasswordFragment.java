@@ -75,36 +75,25 @@ public class ResetPasswordFragment extends Fragment {
             }
         });
 
-        registeredEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        registeredEmail.setOnClickListener(v -> {
 
-                resetPasswordBtn.setEnabled(false);
-                resetPasswordBtn.setTextColor(Color.argb(50,255,255,255));
+            resetPasswordBtn.setEnabled(false);
+            resetPasswordBtn.setTextColor(Color.argb(50,255,255,255));
 
-                firebaseAuth.sendPasswordResetEmail(registeredEmail.getText().toString())
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(getActivity(), "Email send successfully!", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    String error = task.getException().getMessage();
-                                    Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
-                                }
-                                resetPasswordBtn.setEnabled(true);
-                                resetPasswordBtn.setTextColor(Color.rgb(255,255,255));
-                            }
-                        });
-            }
+            firebaseAuth.sendPasswordResetEmail(registeredEmail.getText().toString())
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(getActivity(), "Email send successfully!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            String error = Objects.requireNonNull(task.getException()).getMessage();
+                            Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
+                        }
+                        resetPasswordBtn.setEnabled(true);
+                        resetPasswordBtn.setTextColor(Color.rgb(255,255,255));
+                    });
         });
 
-        goBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setFragment(new SignInFragment());
-            }
-        });
+        goBack.setOnClickListener(v -> setFragment(new SignInFragment()));
     }
 
     private void checkInputs() {
