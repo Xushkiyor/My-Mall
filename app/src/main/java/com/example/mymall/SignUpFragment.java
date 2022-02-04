@@ -33,6 +33,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class SignUpFragment extends Fragment {
 
@@ -198,8 +199,9 @@ public class SignUpFragment extends Fragment {
 
     private void checkEmailAndPassword() {
 
-        Drawable customErrorIcon = getResources().getDrawable(R.mipmap.custom_error_icon);
-        customErrorIcon.setBounds(0, 0, customErrorIcon.getIntrinsicWidth(), customErrorIcon.getIntrinsicHeight());
+        @SuppressLint("UseCompatLoadingForDrawables") Drawable customErrorIcon = getResources()
+                .getDrawable(R.mipmap.custom_error_icon);
+        customErrorIcon.setBounds(0, 0, customErrorIcon.getIntrinsicWidth(),customErrorIcon.getIntrinsicHeight());
 
         if (email.getText().toString().matches(emailPattern)) {
             if (password.getText().toString().contentEquals(confirmPassword.getText().toString())) {
@@ -227,7 +229,7 @@ public class SignUpFragment extends Fragment {
                                                         progressBar.setVisibility(View.INVISIBLE);
                                                         signUpBtn.setEnabled(true);
                                                         signUpBtn.setTextColor(Color.rgb(255, 255, 255));
-                                                        String error = task.getException().getMessage();
+                                                        String error = Objects.requireNonNull(task.getException()).getMessage();
                                                         Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
                                                     }
                                                 }
@@ -236,7 +238,7 @@ public class SignUpFragment extends Fragment {
                                     progressBar.setVisibility(View.INVISIBLE);
                                     signUpBtn.setEnabled(true);
                                     signUpBtn.setTextColor(Color.rgb(255, 255, 255));
-                                    String error = task.getException().getMessage();
+                                    String error = Objects.requireNonNull(task.getException()).getMessage();
                                     Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
                                 }
                             }

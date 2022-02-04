@@ -70,19 +70,9 @@ public class SignInFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         newUserAnAccount.setOnClickListener(v -> setFragment(new SignUpFragment()));
-        forgotPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setFragment(new ResetPasswordFragment());
-            }
-        });
+        forgotPassword.setOnClickListener(v -> setFragment(new ResetPasswordFragment()));
 
-        closeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mainIntent();
-            }
-        });
+        closeBtn.setOnClickListener(v -> mainIntent());
 
         emailId.addTextChangedListener(new TextWatcher() {
             @Override
@@ -117,12 +107,7 @@ public class SignInFragment extends Fragment {
             }
         });
 
-        signInBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkEmailAndPassword();
-            }
-        });
+        signInBtn.setOnClickListener(v -> checkEmailAndPassword());
     }
 
     private void setFragment(Fragment fragment) {
