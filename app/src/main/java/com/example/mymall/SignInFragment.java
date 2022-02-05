@@ -1,5 +1,7 @@
 package com.example.mymall;
 
+import static com.example.mymall.RegisterActivity.onResetPasswordFragment;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -70,8 +72,10 @@ public class SignInFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         newUserAnAccount.setOnClickListener(v -> setFragment(new SignUpFragment()));
-        forgotPassword.setOnClickListener(v -> setFragment(new ResetPasswordFragment()));
-
+        forgotPassword.setOnClickListener(v -> {
+            onResetPasswordFragment = true;
+            setFragment(new ResetPasswordFragment());
+        });
         closeBtn.setOnClickListener(v -> mainIntent());
 
         emailId.addTextChangedListener(new TextWatcher() {
@@ -145,7 +149,7 @@ public class SignInFragment extends Fragment {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                  mainIntent();
+                                    mainIntent();
                                 } else {
                                     progressBar.setVisibility(View.INVISIBLE);
                                     signInBtn.setEnabled(true);
@@ -164,7 +168,7 @@ public class SignInFragment extends Fragment {
     }
 
     private void mainIntent() {
-        Intent mainIntent = new Intent(getActivity(),MainActivity.class);
+        Intent mainIntent = new Intent(getActivity(), MainActivity.class);
         startActivity(mainIntent);
         getActivity().finish();
     }
