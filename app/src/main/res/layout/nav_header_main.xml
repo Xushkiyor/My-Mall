@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
     android:background="@color/colorPrimary"
@@ -15,24 +16,42 @@
     <ImageView
         android:id="@+id/main_profile_image"
         android:layout_width="wrap_content"
+        android:elevation="3dp"
         android:layout_height="wrap_content"
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
+        app:layout_constraintBottom_toTopOf="@+id/main_fullname"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@mipmap/profile_placeholder" />
 
     <TextView
+        android:id="@+id/main_fullname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/main_fullname"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="Not Signed In"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/colorAccent" />
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/main_email"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/main_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email Address"
-        android:textColor="#80ffffff" />
-</LinearLayout>
+        android:textColor="#80ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/add_profile_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:elevation="5dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/main_profile_image"
+        app:layout_constraintEnd_toEndOf="@+id/main_profile_image"
+        app:srcCompat="@mipmap/add_profile_photo" />
+</androidx.constraintlayout.widget.ConstraintLayout>
